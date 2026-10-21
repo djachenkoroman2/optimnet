@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 700" width="780" height="700">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="780" height="700" fill="#ffffff"/>
+
+  <text x="390" y="28" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Жадная эвристика</text>
+
+  <!-- Начало -->
+  <rect x="310" y="46" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="71" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Начало</text>
+
+  <!-- Ввод -->
+  <polygon points="250,106 530,106 510,154 230,154" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="134" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ввод: задача, бюджет B</text>
+
+  <!-- Инициализация -->
+  <rect x="190" y="174" width="400" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="198" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">x := ∅ (пустое решение);</text>
+  <text x="390" y="218" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">F := F(x); история := [F]</text>
+
+  <!-- Выгоды кандидатов -->
+  <rect x="190" y="252" width="400" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="272" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Для каждого кандидата k вне решения</text>
+  <text x="390" y="290" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">и в пределах бюджета:</text>
+  <text x="390" y="308" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">r_k := (F(x ∪ {k}) − F(x)) / c_k</text>
+
+  <!-- Условие -->
+  <polygon points="390,359 502,392 390,425 278,392" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="399" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">max r_k &gt; 0 ?</text>
+
+  <!-- Добавление кандидата -->
+  <rect x="190" y="450" width="400" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="470" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">k* := argmax r_k;</text>
+  <text x="390" y="488" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">x := x ∪ {k*}; F := F(x);</text>
+  <text x="390" y="506" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">история := история + F</text>
+
+  <!-- Вывод -->
+  <polygon points="220,540 560,540 540,590 200,590" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="562" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вывод: решение x, F(x),</text>
+  <text x="390" y="580" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">история сходимости</text>
+
+  <!-- Конец -->
+  <rect x="310" y="610" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="635" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Конец</text>
+
+  <!-- Стрелки -->
+  <line x1="390" y1="86" x2="390" y2="104" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="154" x2="390" y2="172" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="226" x2="390" y2="250" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="316" x2="390" y2="357" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- да: добавить кандидата -->
+  <line x1="390" y1="425" x2="390" y2="448" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="440" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <!-- возврат к оценке выгод -->
+  <polyline points="190,482 122,482 122,284 188,284" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- нет: вывод -->
+  <polyline points="502,392 624,392 624,565 562,565" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="510" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <line x1="390" y1="590" x2="390" y2="608" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>

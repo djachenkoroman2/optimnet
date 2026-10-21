@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 1230" width="780" height="1230">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="780" height="1230" fill="#ffffff"/>
+
+  <text x="390" y="28" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Генетический алгоритм</text>
+
+  <!-- Начало -->
+  <rect x="310" y="46" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="71" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Начало</text>
+
+  <!-- Ввод -->
+  <polygon points="200,106 600,106 580,160 180,160" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="128" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ввод: задача Problem, параметры ГА</text>
+  <text x="390" y="148" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">(N, G, Pк, Pм, турнир T, элитизм E), seed</text>
+
+  <!-- Начальная популяция -->
+  <rect x="200" y="182" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="206" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Сформировать начальную популяцию:</text>
+  <text x="390" y="226" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">N случайных векторов [0, 1]ⁿ</text>
+
+  <!-- Оценка -->
+  <rect x="200" y="258" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="282" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Оценить приспособленность особей</text>
+  <text x="390" y="302" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">(целевая функция F = −Φ)</text>
+
+  <!-- g := 1 -->
+  <rect x="320" y="330" width="140" height="34" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="353" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">g := 1</text>
+
+  <!-- Элитизм -->
+  <rect x="200" y="392" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="416" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Элитизм: перенос E лучших особей</text>
+  <text x="390" y="436" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">в новую популяцию</text>
+
+  <!-- Популяция заполнена? -->
+  <polygon points="390,467 500,500 390,533 280,500" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="496" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Популяция</text>
+  <text x="390" y="514" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">заполнена?</text>
+
+  <!-- Селекция -->
+  <rect x="200" y="566" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="590" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Турнирная селекция двух родителей</text>
+  <text x="390" y="610" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">(турнир размера T)</text>
+
+  <!-- Кроссинговер -->
+  <rect x="200" y="642" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="666" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Равномерный кроссинговер</text>
+  <text x="390" y="686" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">(с вероятностью Pк)</text>
+
+  <!-- Мутация -->
+  <rect x="200" y="718" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="742" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Мутация генов</text>
+  <text x="390" y="762" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">(с вероятностью Pм)</text>
+
+  <!-- Оценка новой популяции -->
+  <rect x="200" y="802" width="380" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="826" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Оценить новую популяцию; найти</text>
+  <text x="390" y="846" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">лучшую особь; F_best → история</text>
+
+  <!-- Остановка? -->
+  <polygon points="390,885 505,916 390,947 275,916" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="912" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Остановка</text>
+  <text x="390" y="930" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">по сигналу?</text>
+
+  <!-- g := g + 1 -->
+  <rect x="320" y="974" width="140" height="34" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="997" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">g := g + 1</text>
+
+  <!-- g <= G ? -->
+  <polygon points="390,1027 475,1058 390,1089 305,1058" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="1064" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">g ≤ G ?</text>
+
+  <!-- Вывод -->
+  <polygon points="200,1108 600,1108 580,1160 180,1160" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="1130" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вывод: лучшее решение x*,</text>
+  <text x="390" y="1150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">история сходимости</text>
+
+  <!-- Конец -->
+  <rect x="310" y="1176" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="1201" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Конец</text>
+
+  <!-- Стрелки -->
+  <line x1="390" y1="86" x2="390" y2="104" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="160" x2="390" y2="180" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="234" x2="390" y2="256" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="310" x2="390" y2="328" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="364" x2="390" y2="390" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- нет: к селекции -->
+  <line x1="390" y1="533" x2="390" y2="564" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="552" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <!-- да: к оценке новой популяции -->
+  <polyline points="500,500 570,500 570,828 582,828" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="508" y="492" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <line x1="390" y1="618" x2="390" y2="640" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="694" x2="390" y2="716" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- возврат мутации к условию заполнения -->
+  <polyline points="200,744 130,744 130,500 278,500" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="770" x2="390" y2="800" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="390" y1="854" x2="390" y2="883" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- да: остановка -> вывод -->
+  <polyline points="275,916 110,916 110,1134 178,1134" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="150" y="908" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <!-- нет: g+1 -->
+  <line x1="390" y1="947" x2="390" y2="972" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="964" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <line x1="390" y1="1008" x2="390" y2="1025" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- да: новое поколение -->
+  <polyline points="475,1058 710,1058 710,418 582,418" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="490" y="1050" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <!-- нет: вывод -->
+  <line x1="390" y1="1089" x2="390" y2="1106" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="1102" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <line x1="390" y1="1160" x2="390" y2="1174" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 960" width="780" height="960">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="780" height="960" fill="#ffffff"/>
+
+  <text x="390" y="28" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Метод ветвей и границ</text>
+
+  <!-- Начало -->
+  <rect x="310" y="46" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="71" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Начало</text>
+
+  <!-- Ввод -->
+  <polygon points="190,106 590,106 570,162 170,162" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="128" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ввод: задача (постановка 5.1, дискретные</text>
+  <text x="390" y="148" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">переменные), предел числа узлов max_nodes</text>
+
+  <!-- Проверка постановки -->
+  <polygon points="390,190 518,223 390,256 262,223" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="218" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Постановка 5.1 и</text>
+  <text x="390" y="236" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">дискретный режим?</text>
+
+  <!-- Ошибка -->
+  <polygon points="565,196 725,196 705,248 545,248" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="635" y="218" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Сообщение</text>
+  <text x="635" y="238" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">об ошибке</text>
+
+  <!-- Инициализация -->
+  <rect x="190" y="282" width="400" height="52" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="306" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ψ_best := −∞; nodes := 0;</text>
+  <text x="390" y="326" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">решение := пустое</text>
+
+  <!-- Верхняя граница -->
+  <rect x="190" y="358" width="400" height="48" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="378" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Верхняя граница узла:</text>
+  <text x="390" y="398" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ψ_ВГ := Ψ (все свободные кандидаты включены)</text>
+
+  <!-- Отсечение? -->
+  <polygon points="390,428 510,460 390,492 270,460" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="466" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ψ_ВГ ≤ Ψ_best ?</text>
+
+  <!-- Лист? -->
+  <polygon points="390,518 476,548 390,578 304,548" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">pos = n ?</text>
+
+  <!-- Ветвление -->
+  <rect x="190" y="600" width="400" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="390" y="620" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ветвление:</text>
+  <text x="390" y="638" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">1) включить кандидата pos (в пределах бюджета)</text>
+  <text x="390" y="656" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">0) не включать кандидата</text>
+
+  <!-- Обновление best -->
+  <rect x="478" y="580" width="254" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="605" y="600" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Если Ψ(x) &gt; Ψ_best:</text>
+  <text x="605" y="618" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ψ_best := Ψ(x); x_best := x;</text>
+  <text x="605" y="636" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">история += Ψ_best</text>
+
+  <!-- Завершение? -->
+  <polygon points="390,726 532,761 390,796 248,761" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="756" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Все узлы просмотрены</text>
+  <text x="390" y="774" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">или nodes &gt; max_nodes ?</text>
+
+  <!-- Вывод -->
+  <polygon points="200,818 580,818 560,870 180,870" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="390" y="840" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вывод: x_best, Ψ_best,</text>
+  <text x="390" y="860" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">история улучшений</text>
+
+  <!-- Конец -->
+  <rect x="310" y="886" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="911" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Конец</text>
+
+  <!-- Стрелки -->
+  <line x1="390" y1="86" x2="390" y2="104" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- нет: ошибка -->
+  <line x1="518" y1="223" x2="543" y2="223" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="524" y="215" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <!-- ошибка -> конец -->
+  <polyline points="635,248 635,280 748,280 748,906 472,906" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- да: инициализация -->
+  <line x1="390" y1="256" x2="390" y2="280" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="272" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <line x1="390" y1="334" x2="390" y2="356" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- да: отсечение -->
+  <polyline points="510,460 652,460 652,761 534,761" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="522" y="452" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да, отсечение</text>
+  <!-- нет: проверка листа -->
+  <line x1="390" y1="492" x2="390" y2="516" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="508" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <!-- да: обновление best -->
+  <polyline points="476,548 605,548 605,578" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="490" y="540" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <!-- нет: ветвление -->
+  <line x1="390" y1="578" x2="390" y2="598" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <!-- возврат от ветвления к оценке границы -->
+  <polyline points="190,632 132,632 132,382 188,382" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- обновление best -> проверка завершения -->
+  <polyline points="605,644 605,700 390,700 390,724" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- нет: следующий узел -->
+  <polyline points="248,761 110,761 110,382 186,382" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="140" y="753" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет, следующий узел</text>
+  <!-- да: вывод -->
+  <line x1="390" y1="796" x2="390" y2="816" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="408" y="810" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <line x1="390" y1="870" x2="390" y2="884" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>

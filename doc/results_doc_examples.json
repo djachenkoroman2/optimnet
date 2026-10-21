@@ -1,0 +1,1461 @@
+{
+  "meta": {
+    "title": "Прогоны алгоритмов OptimNet для руководства пользователя",
+    "budget_rule": "0.5 · Σ стоимостей кандидатов (как в GUI)",
+    "runtime_total_sec": 10.004
+  },
+  "examples": [
+    {
+      "id": 1,
+      "description": "medium: постановка 5.1 (max_survivability), flow, дискретные переменные; ГА, параметры по умолчанию, seed=42",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "ga",
+        "name": "Генетический алгоритм",
+        "params": {
+          "population_size": 50,
+          "generations": 100,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.05,
+          "tournament_size": 3,
+          "elitism": 1
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Генетический алгоритм",
+        "objective": -5.475,
+        "psi": 0.925,
+        "cost": 4.0,
+        "t_rec": 2.55,
+        "q_mean": 0.888889,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 0.8
+        },
+        "iterations": 100,
+        "evaluations": 61,
+        "runtime_sec": 0.2105,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "description": "medium: постановка 5.1, flow, дискретные переменные; имитация отжига (T₀=1.0, cooling=0.98, 2000 итераций, T_min=1e-3), seed=42",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "sa",
+        "name": "Имитация отжига",
+        "params": {
+          "t0": 1.0,
+          "cooling": 0.98,
+          "iterations": 2000,
+          "t_min": 0.001
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Имитация отжига",
+        "objective": -5.475,
+        "psi": 0.925,
+        "cost": 14.0,
+        "t_rec": 2.55,
+        "q_mean": 0.888889,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 0.8
+        },
+        "iterations": 342,
+        "evaluations": 47,
+        "runtime_sec": 0.0348,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          },
+          {
+            "id": "C1r",
+            "source": "R4",
+            "target": "R1",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          },
+          {
+            "id": "C2r",
+            "source": "R6",
+            "target": "R2",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 6.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "description": "small: постановка 5.1, flow, дискретные переменные; ветви и границы (max_nodes=200000) — точное решение",
+      "network": "examples/small.json",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 10.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "bnb",
+        "name": "Ветви и границы",
+        "params": {
+          "max_nodes": 200000
+        }
+      },
+      "seed": null,
+      "result": {
+        "algorithm": "Ветви и границы",
+        "objective": 1.0,
+        "psi": 1.0,
+        "cost": 10.0,
+        "t_rec": 2.0,
+        "q_mean": 1.0,
+        "q_min_actual": 1.0,
+        "feasible": true,
+        "violations": {},
+        "iterations": 7,
+        "evaluations": 5,
+        "runtime_sec": 0.0021,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R3",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          },
+          {
+            "id": "C2",
+            "source": "R2",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 6.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "description": "medium: постановка 5.1, flow, дискретные переменные; жадная эвристика (параметров нет)",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "greedy",
+        "name": "Жадная эвристика",
+        "params": {}
+      },
+      "seed": null,
+      "result": {
+        "algorithm": "Жадная эвристика",
+        "objective": -5.475,
+        "psi": 0.925,
+        "cost": 4.0,
+        "t_rec": 2.55,
+        "q_mean": 0.888889,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 0.8
+        },
+        "iterations": 2,
+        "evaluations": 12,
+        "runtime_sec": 0.0072,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "description": "medium: постановка 5.2 (min_cost), flow, дискретные переменные; Ψ_треб=0.9; ГА, seed=42. Выгодное направление — минимизация: objective = −C_Σ со штрафами",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "min_cost",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "ga",
+        "name": "Генетический алгоритм",
+        "params": {
+          "population_size": 50,
+          "generations": 100,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.05,
+          "tournament_size": 3,
+          "elitism": 1
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Генетический алгоритм",
+        "objective": -10.4,
+        "psi": 0.925,
+        "cost": 4.0,
+        "t_rec": 2.55,
+        "q_mean": 0.888889,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 0.8
+        },
+        "iterations": 100,
+        "evaluations": 47,
+        "runtime_sec": 0.1782,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "description": "medium: постановка 5.3 (minimax — максимин min Q по сценариям), flow, дискретные переменные; отжиг, seed=42",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "minimax",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "sa",
+        "name": "Имитация отжига",
+        "params": {
+          "t0": 1.0,
+          "cooling": 0.98,
+          "iterations": 2000,
+          "t_min": 0.001
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Имитация отжига",
+        "objective": -6.4,
+        "psi": 0.925,
+        "cost": 14.0,
+        "t_rec": 2.55,
+        "q_mean": 0.888889,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 0.8
+        },
+        "iterations": 342,
+        "evaluations": 47,
+        "runtime_sec": 0.0367,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R4",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          },
+          {
+            "id": "C1r",
+            "source": "R4",
+            "target": "R1",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 4.0
+          },
+          {
+            "id": "C2r",
+            "source": "R6",
+            "target": "R2",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 6.0
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "description": "large: аддитивная свёртка (scalarized), flow, смешанные переменные (mixed); веса (0.5, 0.2, 0.1, 0.2); ГА, seed=42",
+      "network": "examples/large.json",
+      "config": {
+        "formulation": "scalarized",
+        "mode": "mixed",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 54.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "ga",
+        "name": "Генетический алгоритм",
+        "params": {
+          "population_size": 50,
+          "generations": 100,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.05,
+          "tournament_size": 3,
+          "elitism": 1
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Генетический алгоритм",
+        "objective": -127.940818,
+        "psi": 0.4,
+        "cost": 9.452726,
+        "t_rec": 4.86,
+        "q_mean": 0.484848,
+        "q_min_actual": 0.0,
+        "feasible": false,
+        "violations": {
+          "quality": 3.583333
+        },
+        "iterations": 100,
+        "evaluations": 1738,
+        "runtime_sec": 8.441,
+        "chosen": [
+          {
+            "id": "C1",
+            "source": "R1",
+            "target": "R8",
+            "volume": 0.8009,
+            "capacity_added": 8.0091,
+            "cost": 3.2036
+          },
+          {
+            "id": "C2",
+            "source": "R2",
+            "target": "R9",
+            "volume": 1.0,
+            "capacity_added": 10.0,
+            "cost": 6.0
+          },
+          {
+            "id": "C1r",
+            "source": "R8",
+            "target": "R1",
+            "volume": 0.0623,
+            "capacity_added": 0.6227,
+            "cost": 0.2491
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "description": "medium: постановка 5.1, flow, дискретные переменные; эксперимент — ga/sa/greedy, по 3 прогона (seeds 42, 43, 44)",
+      "network": "examples/medium.json",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithms": {
+        "ga": {
+          "name": "Генетический алгоритм",
+          "params": {
+            "population_size": 50,
+            "generations": 100,
+            "crossover_rate": 0.8,
+            "mutation_rate": 0.05,
+            "tournament_size": 3,
+            "elitism": 1
+          },
+          "seeds": [
+            42,
+            43,
+            44
+          ],
+          "objectives": [
+            -5.475,
+            -5.475,
+            -5.475
+          ],
+          "best_objective": -5.475,
+          "mean_objective": -5.475,
+          "worst_objective": -5.475,
+          "psi_of_best": 0.925,
+          "cost_of_best": 4.0,
+          "mean_runtime_sec": 0.1653,
+          "mean_iterations": 100.0,
+          "mean_evaluations": 21.3,
+          "history_of_best": [
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475
+          ],
+          "best_run": {
+            "algorithm": "Генетический алгоритм",
+            "objective": -5.475,
+            "psi": 0.925,
+            "cost": 4.0,
+            "t_rec": 2.55,
+            "q_mean": 0.888889,
+            "q_min_actual": 0.0,
+            "feasible": false,
+            "violations": {
+              "quality": 0.8
+            },
+            "iterations": 100,
+            "evaluations": 61,
+            "runtime_sec": 0.1897,
+            "chosen": [
+              {
+                "id": "C1",
+                "source": "R1",
+                "target": "R4",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              }
+            ]
+          }
+        },
+        "sa": {
+          "name": "Имитация отжига",
+          "params": {
+            "t0": 1.0,
+            "cooling": 0.98,
+            "iterations": 2000,
+            "t_min": 0.001
+          },
+          "seeds": [
+            42,
+            43,
+            44
+          ],
+          "objectives": [
+            -5.475,
+            -5.475,
+            -5.475
+          ],
+          "best_objective": -5.475,
+          "mean_objective": -5.475,
+          "worst_objective": -5.475,
+          "psi_of_best": 0.925,
+          "cost_of_best": 14.0,
+          "mean_runtime_sec": 0.0062,
+          "mean_iterations": 342.0,
+          "mean_evaluations": 0.0,
+          "history_of_best": [
+            -24.75,
+            -24.75,
+            -24.75,
+            -24.75,
+            -24.75,
+            -24.75,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475,
+            -5.475
+          ],
+          "best_run": {
+            "algorithm": "Имитация отжига",
+            "objective": -5.475,
+            "psi": 0.925,
+            "cost": 14.0,
+            "t_rec": 2.55,
+            "q_mean": 0.888889,
+            "q_min_actual": 0.0,
+            "feasible": false,
+            "violations": {
+              "quality": 0.8
+            },
+            "iterations": 342,
+            "evaluations": 0,
+            "runtime_sec": 0.0062,
+            "chosen": [
+              {
+                "id": "C1",
+                "source": "R1",
+                "target": "R4",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              },
+              {
+                "id": "C1r",
+                "source": "R4",
+                "target": "R1",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              },
+              {
+                "id": "C2r",
+                "source": "R6",
+                "target": "R2",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 6.0
+              }
+            ]
+          }
+        },
+        "greedy": {
+          "name": "Жадная эвристика",
+          "params": {},
+          "seeds": [
+            42,
+            43,
+            44
+          ],
+          "objectives": [
+            -5.475,
+            -5.475,
+            -5.475
+          ],
+          "best_objective": -5.475,
+          "mean_objective": -5.475,
+          "worst_objective": -5.475,
+          "psi_of_best": 0.925,
+          "cost_of_best": 4.0,
+          "mean_runtime_sec": 0.0002,
+          "mean_iterations": 2.0,
+          "mean_evaluations": 0.0,
+          "history_of_best": [
+            -24.75,
+            -5.475
+          ],
+          "best_run": {
+            "algorithm": "Жадная эвристика",
+            "objective": -5.475,
+            "psi": 0.925,
+            "cost": 4.0,
+            "t_rec": 2.55,
+            "q_mean": 0.888889,
+            "q_min_actual": 0.0,
+            "feasible": false,
+            "violations": {
+              "quality": 0.8
+            },
+            "iterations": 2,
+            "evaluations": 0,
+            "runtime_sec": 0.0002,
+            "chosen": [
+              {
+                "id": "C1",
+                "source": "R1",
+                "target": "R4",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "description": "ручная топология (tests/conftest.py): A(server), B(router), C(server); каналы A→B (5, ц.2), B→C (5, ц.2), A→C (2, ц.1); потребность A→C объём 8; кандидаты C1 (A→B, 10, ц.3), C2 (B→C, 10, ц.4); сценарии S0 (p=0.6, без отказов), S1 (p=0.4, отказ узла B). Постановка 5.1, flow, дискретные переменные, Q_min=0.8, бюджет 3.5; ГА, seed=42",
+      "network": "manual (построена кодом, см. description)",
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "flow",
+        "q_min": 0.8,
+        "budget": 3.5,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "algorithm": {
+        "key": "ga",
+        "name": "Генетический алгоритм",
+        "params": {
+          "population_size": 50,
+          "generations": 100,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.05,
+          "tournament_size": 3,
+          "elitism": 1
+        }
+      },
+      "seed": 42,
+      "result": {
+        "algorithm": "Генетический алгоритм",
+        "objective": -2.425,
+        "psi": 0.6,
+        "cost": 0.0,
+        "t_rec": 0.0,
+        "q_mean": 0.5625,
+        "q_min_actual": 0.25,
+        "feasible": false,
+        "violations": {
+          "quality": 0.55
+        },
+        "iterations": 100,
+        "evaluations": 4,
+        "runtime_sec": 0.1875,
+        "chosen": []
+      }
+    },
+    {
+      "id": 10,
+      "description": "medium: постановка 5.1, дискретные переменные, качество Q(x,s) — connectivity; ГА, seed=42 — два подпрогона: штатные и сгенерированные сценарии",
+      "network": "examples/medium.json",
+      "algorithm": {
+        "key": "ga",
+        "name": "Генетический алгоритм",
+        "params": {
+          "population_size": 50,
+          "generations": 100,
+          "crossover_rate": 0.8,
+          "mutation_rate": 0.05,
+          "tournament_size": 3,
+          "elitism": 1
+        }
+      },
+      "seed": 42,
+      "config": {
+        "formulation": "max_survivability",
+        "mode": "discrete",
+        "quality_mode": "connectivity",
+        "q_min": 0.8,
+        "budget": 18.0,
+        "psi_required": 0.9,
+        "weights": [
+          0.5,
+          0.2,
+          0.1,
+          0.2
+        ],
+        "unit_time": 1.0
+      },
+      "sub_runs": [
+        {
+          "description": "штатные сценарии из examples/medium.json, Q(x,s) — связность (connectivity)",
+          "config": {
+            "formulation": "max_survivability",
+            "mode": "discrete",
+            "quality_mode": "connectivity",
+            "q_min": 0.8,
+            "budget": 18.0,
+            "psi_required": 0.9,
+            "weights": [
+              0.5,
+              0.2,
+              0.1,
+              0.2
+            ],
+            "unit_time": 1.0
+          },
+          "n_scenarios": 9,
+          "result": {
+            "algorithm": "Генетический алгоритм",
+            "objective": -5.475,
+            "psi": 0.925,
+            "cost": 4.0,
+            "t_rec": 2.55,
+            "q_mean": 0.888889,
+            "q_min_actual": 0.0,
+            "feasible": false,
+            "violations": {
+              "quality": 0.8
+            },
+            "iterations": 100,
+            "evaluations": 61,
+            "runtime_sec": 0.1887,
+            "chosen": [
+              {
+                "id": "C1",
+                "source": "R1",
+                "target": "R4",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              }
+            ]
+          }
+        },
+        {
+          "description": "сгенерированные сценарии: generate_scenarios(net, count=8, p_link=0.15, p_node=0.05, seed=42) + штатный S0 (p=0.4), остальные перенормированы до суммы 0.6; Q(x,s) — связность",
+          "config": {
+            "formulation": "max_survivability",
+            "mode": "discrete",
+            "quality_mode": "connectivity",
+            "q_min": 0.8,
+            "budget": 18.0,
+            "psi_required": 0.9,
+            "weights": [
+              0.5,
+              0.2,
+              0.1,
+              0.2
+            ],
+            "unit_time": 1.0
+          },
+          "n_scenarios": 9,
+          "scenarios": [
+            {
+              "id": "S0",
+              "p": 0.4,
+              "failed_nodes": [],
+              "failed_links": []
+            },
+            {
+              "id": "S1",
+              "p": 0.075,
+              "failed_nodes": [
+                "R2",
+                "S2"
+              ],
+              "failed_links": [
+                [
+                  "R1",
+                  "S1"
+                ],
+                [
+                  "R2",
+                  "R3"
+                ],
+                [
+                  "R6",
+                  "R5"
+                ],
+                [
+                  "S1",
+                  "R1"
+                ]
+              ]
+            },
+            {
+              "id": "S2",
+              "p": 0.075,
+              "failed_nodes": [
+                "R8"
+              ],
+              "failed_links": [
+                [
+                  "R1",
+                  "R2"
+                ],
+                [
+                  "R2",
+                  "R3"
+                ],
+                [
+                  "R5",
+                  "S2"
+                ]
+              ]
+            },
+            {
+              "id": "S3",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R6",
+                  "R7"
+                ],
+                [
+                  "R7",
+                  "R6"
+                ],
+                [
+                  "R7",
+                  "R8"
+                ],
+                [
+                  "S1",
+                  "R1"
+                ],
+                [
+                  "S2",
+                  "R5"
+                ]
+              ]
+            },
+            {
+              "id": "S4",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R2",
+                  "S1"
+                ],
+                [
+                  "R7",
+                  "R8"
+                ],
+                [
+                  "R8",
+                  "R1"
+                ],
+                [
+                  "S2",
+                  "R5"
+                ]
+              ]
+            },
+            {
+              "id": "S5",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R2",
+                  "S1"
+                ],
+                [
+                  "R5",
+                  "R6"
+                ],
+                [
+                  "R5",
+                  "S2"
+                ],
+                [
+                  "R8",
+                  "R1"
+                ]
+              ]
+            },
+            {
+              "id": "S6",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R1",
+                  "S1"
+                ],
+                [
+                  "R3",
+                  "R2"
+                ]
+              ]
+            },
+            {
+              "id": "S7",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R4",
+                  "S2"
+                ],
+                [
+                  "R6",
+                  "R7"
+                ],
+                [
+                  "S1",
+                  "R1"
+                ]
+              ]
+            },
+            {
+              "id": "S8",
+              "p": 0.075,
+              "failed_nodes": [],
+              "failed_links": [
+                [
+                  "R3",
+                  "R4"
+                ],
+                [
+                  "R4",
+                  "S2"
+                ],
+                [
+                  "R5",
+                  "R6"
+                ]
+              ]
+            }
+          ],
+          "result": {
+            "algorithm": "Генетический алгоритм",
+            "objective": -5.475,
+            "psi": 0.925,
+            "cost": 4.0,
+            "t_rec": 2.325,
+            "q_mean": 0.888889,
+            "q_min_actual": 0.0,
+            "feasible": false,
+            "violations": {
+              "quality": 0.8
+            },
+            "iterations": 100,
+            "evaluations": 61,
+            "runtime_sec": 0.1963,
+            "chosen": [
+              {
+                "id": "C1",
+                "source": "R1",
+                "target": "R4",
+                "volume": 1.0,
+                "capacity_added": 10.0,
+                "cost": 4.0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

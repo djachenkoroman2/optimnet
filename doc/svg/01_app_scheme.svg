@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 940" width="860" height="940">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="860" height="940" fill="#ffffff"/>
+
+  <text x="430" y="28" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Общая схема работы приложения OptimNet</text>
+
+  <!-- Начало -->
+  <rect x="350" y="46" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="430" y="71" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Начало</text>
+
+  <!-- Запуск -->
+  <rect x="150" y="106" width="560" height="56" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="130" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Запуск: QApplication, настройка логирования,</text>
+  <text x="430" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">главное окно MainWindow (6 вкладок)</text>
+
+  <!-- Топология -->
+  <rect x="150" y="186" width="560" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вкладка «Топология»: создание/загрузка сети —</text>
+  <text x="430" y="228" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">узлы, каналы, потребности,</text>
+  <text x="430" y="246" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">кандидаты резервирования</text>
+
+  <!-- Сценарии -->
+  <rect x="150" y="274" width="560" height="56" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="298" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вкладка «Сценарии»: сценарии отказов</text>
+  <text x="430" y="318" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">узлов и каналов с вероятностями</text>
+
+  <!-- Задача -->
+  <rect x="150" y="354" width="560" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="378" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вкладка «Задача»: постановка (5.1 / 5.2 / 5.3 / свёртка),</text>
+  <text x="430" y="396" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">режим переменных (дискретный / непрерывный / смешанный),</text>
+  <text x="430" y="414" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">бюджет, Q_min, Ψ_тр, веса критериев</text>
+
+  <!-- Алгоритм -->
+  <rect x="150" y="442" width="560" height="56" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="466" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вкладка «Алгоритм»: выбор метода (ГА / отжиг /</text>
+  <text x="430" y="486" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">ветви и границы / жадный), параметры, seed; кнопка «Запустить»</text>
+
+  <!-- Поток -->
+  <rect x="150" y="522" width="560" height="56" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="546" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Фоновый поток QThread:</text>
+  <text x="430" y="566" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">формирование Problem, вызов Optimizer.optimize()</text>
+
+  <!-- Итерации -->
+  <rect x="150" y="602" width="560" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="626" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Итерации алгоритма: оценка решения —</text>
+  <text x="430" y="644" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Ψ(x), стоимость, T_восст, Q;</text>
+  <text x="430" y="662" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">сигналы прогресса в GUI (график сходимости)</text>
+
+  <!-- Условие останова -->
+  <polygon points="430,694 565,727 430,760 295,727" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="430" y="722" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Алгоритм завершён</text>
+  <text x="430" y="740" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">или остановлен?</text>
+
+  <!-- Результаты -->
+  <rect x="150" y="782" width="560" height="64" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+  <text x="430" y="806" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Вкладка «Результаты»: решение, показатели,</text>
+  <text x="430" y="824" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">график сходимости, канвас графа,</text>
+  <text x="430" y="842" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">экспорт CSV</text>
+
+  <!-- Конец -->
+  <rect x="350" y="870" width="160" height="40" rx="20" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="430" y="895" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#111827">Конец</text>
+
+  <!-- Стрелки -->
+  <line x1="430" y1="86" x2="430" y2="104" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="162" x2="430" y2="184" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="250" x2="430" y2="272" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="330" x2="430" y2="352" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="418" x2="430" y2="440" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="498" x2="430" y2="520" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="578" x2="430" y2="600" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="666" x2="430" y2="692" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- нет: возврат к итерациям -->
+  <polyline points="565,727 770,727 770,634 712,634" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="650" y="718" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#b91c1c">нет</text>
+  <!-- да: к результатам -->
+  <line x1="430" y1="760" x2="430" y2="780" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="448" y="774" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-style="italic" fill="#15803d">да</text>
+  <line x1="430" y1="846" x2="430" y2="868" stroke="#374151" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>

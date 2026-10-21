@@ -1,0 +1,325 @@
+{
+  "nodes": [
+    {
+      "id": "R1",
+      "kind": "router"
+    },
+    {
+      "id": "R2",
+      "kind": "router"
+    },
+    {
+      "id": "R3",
+      "kind": "router"
+    },
+    {
+      "id": "R4",
+      "kind": "router"
+    },
+    {
+      "id": "S1",
+      "kind": "server"
+    },
+    {
+      "id": "S2",
+      "kind": "server"
+    }
+  ],
+  "links": [
+    {
+      "source": "R1",
+      "target": "R2",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R2",
+      "target": "R1",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R2",
+      "target": "R3",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R3",
+      "target": "R2",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R3",
+      "target": "R4",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R4",
+      "target": "R3",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R4",
+      "target": "R1",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R1",
+      "target": "R4",
+      "capacity": 10.0,
+      "cost": 2.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "S1",
+      "target": "R1",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R1",
+      "target": "S1",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "S1",
+      "target": "R2",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R2",
+      "target": "S1",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "S2",
+      "target": "R3",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R3",
+      "target": "S2",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "S2",
+      "target": "R4",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    },
+    {
+      "source": "R4",
+      "target": "S2",
+      "capacity": 10.0,
+      "cost": 1.0,
+      "delay": 0.0,
+      "reliability": 0.99
+    }
+  ],
+  "demands": [
+    {
+      "source": "S1",
+      "target": "S2",
+      "volume": 8.0
+    }
+  ],
+  "candidates": [
+    {
+      "id": "C1",
+      "source": "R1",
+      "target": "R3",
+      "capacity": 10.0,
+      "cost": 4.0
+    },
+    {
+      "id": "C2",
+      "source": "R2",
+      "target": "R4",
+      "capacity": 10.0,
+      "cost": 6.0
+    },
+    {
+      "id": "C1r",
+      "source": "R3",
+      "target": "R1",
+      "capacity": 10.0,
+      "cost": 4.0
+    },
+    {
+      "id": "C2r",
+      "source": "R4",
+      "target": "R2",
+      "capacity": 10.0,
+      "cost": 6.0
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "S0",
+      "p": 0.4,
+      "failed_nodes": [],
+      "failed_links": []
+    },
+    {
+      "id": "S1",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "R1",
+          "R2"
+        ],
+        [
+          "R2",
+          "R3"
+        ],
+        [
+          "R3",
+          "R4"
+        ],
+        [
+          "R4",
+          "R3"
+        ],
+        [
+          "R4",
+          "S2"
+        ],
+        [
+          "S1",
+          "R1"
+        ]
+      ]
+    },
+    {
+      "id": "S2",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "R4",
+          "R1"
+        ],
+        [
+          "R4",
+          "R3"
+        ]
+      ]
+    },
+    {
+      "id": "S3",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "R2",
+          "R1"
+        ],
+        [
+          "R4",
+          "R1"
+        ]
+      ]
+    },
+    {
+      "id": "S4",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "R1",
+          "S1"
+        ],
+        [
+          "R4",
+          "R1"
+        ],
+        [
+          "S1",
+          "R2"
+        ],
+        [
+          "S2",
+          "R3"
+        ]
+      ]
+    },
+    {
+      "id": "S5",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "S2",
+          "R3"
+        ]
+      ]
+    },
+    {
+      "id": "S6",
+      "p": 0.1,
+      "failed_nodes": [],
+      "failed_links": [
+        [
+          "R1",
+          "S1"
+        ],
+        [
+          "R3",
+          "S2"
+        ],
+        [
+          "R4",
+          "R1"
+        ],
+        [
+          "S1",
+          "R1"
+        ],
+        [
+          "S2",
+          "R4"
+        ]
+      ]
+    }
+  ]
+}
